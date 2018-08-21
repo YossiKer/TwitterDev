@@ -3,36 +3,45 @@ const RetweetsDAL = require('../DALS/retweetsDAL');
 const LikesDAL = require('../DALS/likesDAL');
 
 const TweetBL = class {
-    static getTweets() {
-        let allTweets = TweetsDAL.getTweets();
+    static async getTweets() {
+        let allTweets = await TweetsDAL.getTweets();
 
-        let formatedTweets = [];
+        return new Promise((resolve) => {
+            if (allTweets) {
+                let formatedTweets = [];
 
-        for (let tweet of allTweets) {
-            console.log(tweet);
-            formatedTweets.push({
-                id: tweet.id,
-                content: tweet.text_content,
-                username: tweet.username,
-                timestamp: tweet.timestamp,
-                likes_count: tweet.likes ? tweet.likes.length : 0,
-                retweetscount: tweet.retweets ? tweet.retweets.length : 0
-            })
-        }
+                for (let tweet of allTweets) {
+                    formatedTweets.push({
+                        id: tweet.id,
+                        content: tweet.text_content,
+                        username: tweet.username,
+                        timestamp: tweet.timestamp,
+                        likes_count: tweet.likes ? tweet.likes.length : 0,
+                        retweetscount: tweet.retweets ? tweet.retweets.length : 0
+                    })
+                }
 
-        return formatedTweets;
+                resolve(formatedTweets);
+            } else {
+                resolve(allTweets);
+            }
+        });
     }
 
-    static addTweet(username, content) {
-        return TweetsDAL.addTweet(username, content);
+    static async addTweet(username, content) {
+        let addedTweet = await TweetsDAL.addTweet(username, content);
+        
+        return new Promise((resolve) => {
+            resolve(addedTweet);
+        });
     }
 
-    static likeTweet(tweetId, username) {
-        return LikesDAL.addLike(tweetId, username);
+    static async likeTweet(tweetId, username) {
+        return await LikesDAL.addLike(tweetId, username);
     }
 
-    static retweetTweet(tweetId, username) {
-        return RetweetsDAL.addRetweet(tweetId, username);
+    static async retweetTweet(tweetId, username) {
+        return await RetweetsDAL.addRetweet(tweetId, username);
     }
 }
 

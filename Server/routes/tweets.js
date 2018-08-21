@@ -4,32 +4,35 @@ var router = express.Router();
 var TweetsBL = require('../BL/tweetsBL');
 
 // Get all tweets
-router.get('/', (req, res) => {
-    res.send(TweetsBL.getTweets());
+router.get('/', async (req, res) => {
+    result = await TweetsBL.getTweets();
+    res.send(result);
 });
 
 // Add new tweet
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const username = req.body.username;
     const content = req.body.content;
 
-    res.send(TweetsBL.addTweet(username, content));
+    result = await TweetsBL.addTweet(username, content);
+
+    res.send(result);
 });
 
 // Add like to a tweet
-router.post('/:id/likes', (req, res) => {
+router.post('/:id/likes', async (req, res) => {
     const tweetId = req.param('id');
     const username = req.body.username;
 
-    res.send(TweetsBL.likeTweet(tweetId, username));
+    res.send(await TweetsBL.likeTweet(tweetId, username));
 });
 
 // Add retweet to a tweet
-router.post('/:id/retweet', (req, res) => {
+router.post('/:id/retweet', async (req, res) => {
     const tweetId = req.param('id');
     const username = req.body.username;
 
-    res.send(TweetsBL.retweetTweet(tweetId, username));
+    res.send(await TweetsBL.retweetTweet(tweetId, username));
 });
 
 module.exports = router;
