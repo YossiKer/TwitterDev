@@ -1,4 +1,6 @@
 const Tweet = require('../Entities/tweet');
+const pg = require('pg');
+const Consts = require('../consts');
 
 const allTweets = [{
     "id": "eb676828-26d7-4af9-8fcd-db801419fabe",
@@ -111,10 +113,34 @@ const allTweets = [{
 
 const TweetsDAL = class {
     static getTweets() {
+        //const client = new pg.Client(Consts.databaseConnectionString);
+
+        //client.query(Consts.getAllTweetsQuery, (result, err) => {
+        //    if (!err) {
+        //        return result;
+        //    } else {
+        //        console.log(Consts.errorMessage + err);
+        //    }
+        //});
+
+        //client.end();
+
         return allTweets;
     }
 
     static addTweet(username, content) {
+        //const client = new pg.Client(Consts.databaseConnectionString);
+
+        //client.query(Consts.addTweetQuery, [username, content], (result, err) => {
+        //    if (!err) {
+        //        return result;
+        //    } else {
+        //        console.log(Consts.errorMessage + err);
+        //    }
+        //});
+
+        //client.end();
+
         let newTweet = new Tweet(username, content, new Date());
  
         return newTweet;

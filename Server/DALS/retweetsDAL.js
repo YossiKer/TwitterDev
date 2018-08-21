@@ -1,4 +1,6 @@
 const Retweet = require('../Entities/retweet');
+const pg = require('pg');
+const Consts = require('../consts');
 
 const allRetweets = [{
     "content": "My second tweet",
@@ -52,11 +54,35 @@ const allRetweets = [{
 
 const RetweetsDAL = class {
     static getRetweets() {
+        //const client = new pg.Client(Consts.databaseConnectionString);
+
+        //client.query(Consts.getAllRetweetsQuery, (result, err) => {
+        //    if (!err) {
+        //        return result;
+        //    } else {
+        //        console.log(Consts.errorMessage + err);
+        //    }
+        //});
+
+        //client.end();
+
         return allRetweets;
     }
 
     static addRetweet(post_id, username) {
-        let newRetweet = new Retweet(post_id, username, new Date());
+        //const client = new pg.Client(Consts.databaseConnectionString);
+
+        //client.query(Consts.addRetweet, [post_id, username], (result, err) => {
+        //    if (!err) {
+        //        return result;
+        //    } else {
+        //        console.log(Consts.errorMessage + err);
+        //    }
+        //});
+
+        //client.end();
+
+        //let newRetweet = new Retweet(post_id, username, new Date());
 
         return newRetweet;
     }
