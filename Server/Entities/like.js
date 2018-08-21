@@ -4,6 +4,12 @@ const Like = class {
         this.username = username;
         this.timestamp = timestamp;
     }
+
+    equals(otherLike) {
+        return this.post_id === otherLike.post_id &&
+               this.username === otherLike.username &&
+               this.timestamp === otherLike.timestamp;
+    }
 };
 
 module.exports = Like;
