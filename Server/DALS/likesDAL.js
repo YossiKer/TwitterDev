@@ -2,11 +2,10 @@ const Like = require('../Entities/like');
 const pg = require('pg');
 const Consts = require('../consts');
 
-const client = new pg.Client(Consts.databaseConnectionString);
-
 const LikesDAL = class {
     static addLike(post_id, username) {
         return new Promise((resolve) => {
+            const client = new pg.Client(Consts.databaseConnectionString);
             client.connect();
 
             let timestamp = new Date();

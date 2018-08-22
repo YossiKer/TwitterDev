@@ -2,11 +2,10 @@ const Retweet = require('../Entities/retweet');
 const pg = require('pg');
 const Consts = require('../consts');
 
-const client = new pg.Client(Consts.databaseConnectionString);
-
 const RetweetsDAL = class {
     static getRetweets() {
         return new Promise((resolve) => {
+            const client = new pg.Client(Consts.databaseConnectionString);
             client.connect();
 
             client.query(Consts.getAllRetweetsQuery, (err, res) => {
@@ -23,6 +22,7 @@ const RetweetsDAL = class {
 
     static addRetweet(post_id, username) {
         return new Promise((resolve) => {
+            const client = new pg.Client(Consts.databaseConnectionString);
             client.connect();
 
             let timestamp = new Date();

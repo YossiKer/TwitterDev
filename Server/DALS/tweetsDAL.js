@@ -2,15 +2,15 @@ const Tweet = require('../Entities/tweet');
 const pg = require('pg');
 const Consts = require('../consts');
 
-const client = new pg.Client(Consts.databaseConnectionString);
-
 const TweetsDAL = class {
     static getTweets() {
         return new Promise((resolve) => {
+            const client = new pg.Client(Consts.databaseConnectionString);
             client.connect();
 
             client.query(Consts.getAllTweetsQuery, (err, res) => {
-                client.end;
+                const client = new pg.Client(Consts.databaseConnectionString);
+                client.end();
                 if (!err) {
                     resolve(res.rows[0].json_agg);
                 } else {
@@ -23,6 +23,7 @@ const TweetsDAL = class {
 
     static addTweet(username, content) {
         return new Promise((resolve) => {
+            const client = new pg.Client(Consts.databaseConnectionString);
             client.connect();
 
             let timestamp = new Date();

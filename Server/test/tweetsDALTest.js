@@ -118,7 +118,6 @@ describe('Tweets DAL tests', () => {
             let areEqual = true;
             
             for(let tweetIndex = 0; tweetIndex < actualResult.length && areEqual; tweetIndex++) {
-                let tweetObject = new Tweet(actualResult[tweetIndex].username, actualResult[tweetIndex].text_content, actualResult[tweetIndex].timestamp);
                 if (!tweetObject.equals(expectedResult[tweetIndex])) {
                     console.log(tweetObject);
                     console.log(expectedResult[tweetIndex]);
