@@ -1,0 +1,22 @@
+{
+  "name": "TwitterDev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd Server && npm start",
+    "install": "cd Server && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YossiKer/TwitterDev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YossiKer/TwitterDev/issues"
+  },
+  "homepage": "https://github.com/YossiKer/TwitterDev#readme"
+}
