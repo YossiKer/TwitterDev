@@ -46,7 +46,25 @@ const Consts = {
                              'from tweets t, retweets r ' +
                              'where t.id = r.post_id ' +
                              ') result_rows',
-    errorMessage: 'An error has occured : '
+    errorMessage: 'An error has occured : ',
+    createTweetsTable: 'CREATE TABLE IF NOT EXISTS tweets ( ' +
+                            'id serial primary key, ' +
+                            'text_content text not null, ' +
+                            'username text not null, ' +
+                            'timestamp timestamp with time zone not null ' +
+                       ');',
+    createLikesTable: 'CREATE TABLE IF NOT EXISTS likes ( ' +
+                            'post_id int not null, ' +
+                            'username text not null, ' +
+                            'timestamp timestamp with time zone not null, ' +
+                            'FOREIGN KEY (post_id) REFERENCES tweets(id) ' +
+                      ');',
+    createRetweetsTable: 'CREATE TABLE IF NOT EXISTS retweets ( ' +
+                            'post_id int not null, ' +
+                            'username text not null, ' +
+                            'timestamp timestamp with time zone not null, ' +
+                            'FOREIGN KEY (post_id) REFERENCES tweets(id) ' +
+                         ');'
 }
 
 module.exports = Consts;
