@@ -1,5 +1,5 @@
 const Consts = {
-    databaseConnectionString: 'postgres://postgres:1q2w3e4r5y@localhost:5432/postgres',
+    databaseConnectionString: process.env.DB_PATH,
     getAllTweetsQuery: 'select json_agg(row_to_json(result_rows)) ' +
                        'from (select t.id, ' +
                                    't.text_content, ' + 

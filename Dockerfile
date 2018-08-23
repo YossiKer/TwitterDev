@@ -1,4 +1,4 @@
-FROM stefanscherer/node-windows:pure
+FROM node:7
 
 WORKDIR /TwitterDev
 
