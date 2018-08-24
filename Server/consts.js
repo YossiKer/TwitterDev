@@ -57,13 +57,15 @@ const Consts = {
                             'post_id int not null, ' +
                             'username text not null, ' +
                             'timestamp timestamp with time zone not null, ' +
-                            'FOREIGN KEY (post_id) REFERENCES tweets(id) ' +
+                            'FOREIGN KEY (post_id) REFERENCES tweets(id), ' +
+                            'UNIQUE (post_id, username) ' +
                       ');',
     createRetweetsTable: 'CREATE TABLE IF NOT EXISTS retweets ( ' +
                             'post_id int not null, ' +
                             'username text not null, ' +
                             'timestamp timestamp with time zone not null, ' +
-                            'FOREIGN KEY (post_id) REFERENCES tweets(id) ' +
+                            'FOREIGN KEY (post_id) REFERENCES tweets(id), ' +
+                            'UNIQUE (post_id, username) ' +
                          ');'
 }
 

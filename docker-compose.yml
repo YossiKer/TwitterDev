@@ -15,5 +15,5 @@ services:
         environment:
             DB_PATH: postgres://postgres:1q2w3e4r5y@db:5432/postgres
         depends_on: 
-            - db            
+            - db
         command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm start'
