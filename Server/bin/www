@@ -32,6 +32,7 @@ client.query(Consts.createTweetsTable, (err, res) => {
         client.query(Consts.createRetweetsTable, (err, res) => {
           client.end();
           if (!err) {
+            console.log('created all tables')
             /**
              * Create HTTP server.
              */
