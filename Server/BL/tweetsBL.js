@@ -16,8 +16,8 @@ const TweetBL = class {
                         content: tweet.text_content,
                         username: tweet.username,
                         timestamp: tweet.timestamp,
-                        likes_count: tweet.likes ? tweet.likes.length : 0,
-                        retweetscount: tweet.retweets ? tweet.retweets.length : 0
+                        likesCount: tweet.likes ? tweet.likes.length : 0,
+                        retweetsCount: tweet.retweets ? tweet.retweets.length : 0
                     })
                 }
 
